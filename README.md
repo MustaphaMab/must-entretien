@@ -63,7 +63,7 @@ Ajout d'une carte Google Maps sur la page Contact
 
 🚀 Déploiement
 
-Vous pouvez déployer ce site facilement sur Netlify ou Vercel.
+Pas encore fait, mais en projet sur Netlify ou Vercel.
 
 © Créé par Mustapha Mabrouk
 
