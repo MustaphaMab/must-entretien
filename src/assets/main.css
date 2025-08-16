@@ -1,5 +1,9 @@
 @import './base.css';
 
+main {
+  margin-top: 130px;
+}
+
 #app {
   max-width: 1280px;
   margin: 0 auto;
@@ -7,6 +11,10 @@
   font-weight: normal;
   background-color: var(--color-background-soft);
   border-radius: 8px;
+}
+
+.navbar.navbar-light .navbar-toggler {
+  border-color: rgba(0,0,0,.1);
 }
 
 a,
