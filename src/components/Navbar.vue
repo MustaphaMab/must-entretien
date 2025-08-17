@@ -8,8 +8,8 @@ const isMenuOpen = ref(false)
 <template>
   <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top shadow-sm border-bottom px-4">
     <RouterLink class="navbar-brand d-flex align-items-center gap-2" to="/">
-      <img src="@/assets/logo-header.jpg" alt="Logo RenoPro" style="height: 110px;" />
-      <span class="text-dark fw-bold">RenoPro</span>
+      <img src="@/assets/menage.svg" alt="Logo RenoPro" style="height: 110px;" />
+      <span class="text-dark fw-bold">Must4You</span>
     </RouterLink>
 
     <button class="navbar-toggler" type="button" @click="isMenuOpen = !isMenuOpen">
