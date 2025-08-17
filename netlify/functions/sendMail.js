@@ -1,43 +1,61 @@
-// On importe la librairie Resend (pour envoyer les emails via leur API)
-import { Resend } from 'resend';
+// netlify/functions/sendMail.js
+// 👉 Envoi d'e-mail via Resend depuis ton formulaire Vue
 
-// Fonction handler = point d'entrée de ta Netlify Function
-export async function handler(event, context) {
-  // On initialise Resend avec la clé API stockée dans les variables d'environnement Netlify
+import { Resend } from "resend";
+
+export async function handler(event) {
+  // 1) Protection méthode
+  if (event.httpMethod !== "POST") {
+    return { statusCode: 405, body: "Method Not Allowed" };
+  }
+
+  // 2) Initialisation du client Resend avec ta clé (à mettre dans Netlify → Environment variables)
   const resend = new Resend(process.env.RESEND_API_KEY);
 
   try {
-    // Les données envoyées depuis ton formulaire (name, email, message) 
-    // sont dans le "body" de la requête. On les convertit depuis JSON en objet JS.
-    const data = JSON.parse(event.body);
+    // 3) Données envoyées depuis le front (ContactView.vue)
+    const { name, email, message } = JSON.parse(event.body || "{}");
 
-    // On envoie l'email via Resend
+    // 4) Vérifs basiques
+    if (!name || !email || !message) {
+      return { statusCode: 400, body: JSON.stringify({ success: false, error: "Missing fields" }) };
+    }
+
+    // 5) Construction du contenu HTML
+    const html = `
+      <h3>Nouvelle demande depuis le site</h3>
+      <p><b>Nom :</b> ${name}</p>
+      <p><b>Email :</b> ${email}</p>
+      <p><b>Message :</b><br>${String(message).replace(/\n/g, "<br>")}</p>
+    `;
+
+    // 6) Envoi via Resend
     await resend.emails.send({
-      // Adresse "from" (l’expéditeur → doit être ton domaine vérifié chez Resend)
-      from: 'tonemail@tondomaine.com',
+      // ⚠️ from DOIT être une adresse validée chez Resend.
+      // Pour tester rapidement : 'onboarding@resend.dev' ou 'noreply@resend.dev'
+      from: "noreply@resend.dev",
 
-      // Destinataire (par exemple ton adresse perso où tu veux recevoir les messages)
-      to: 'tonemail@tondomaine.com',
+      // Où tu reçois les messages (ton vrai mail)
+      to: "mister_moos@hotmail.fr",
 
-      // Sujet du mail
-      subject: 'Nouveau message du site',
+      subject: `Demande de contact — ${name}`,
 
-      // Contenu HTML de l’email (on insère les valeurs envoyées depuis le formulaire)
-      html: `<p><b>Nom:</b> ${data.name}</p>
-             <p><b>Email:</b> ${data.email}</p>
-             <p><b>Message:</b> ${data.message}</p>`
+      // ✅ reply_to = l'adresse du client → quand tu cliques "Répondre", ça répond au client
+      reply_to: email,
+
+      html
     });
 
-    // Si tout se passe bien → on renvoie une réponse OK au navigateur
+    // 7) Réponse OK au front
     return {
       statusCode: 200,
       body: JSON.stringify({ success: true })
     };
-  } catch (error) {
-    // Si erreur (ex: mauvaise clé API, problème réseau) → on renvoie une erreur
+  } catch (err) {
+    console.error("Resend error:", err);
     return {
       statusCode: 500,
-      body: JSON.stringify({ error: error.message })
+      body: JSON.stringify({ success: false, error: "Server error" })
     };
   }
 }
