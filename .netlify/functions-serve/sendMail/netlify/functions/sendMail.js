@@ -645,27 +645,27 @@ async function handler(event) {
       <p><b>Email :</b> ${email}</p>
       <p><b>Message :</b><br>${String(message).replace(/\n/g, "<br>")}</p>
     `;
-    await resend.emails.send({
-      // ⚠️ from DOIT être une adresse validée chez Resend.
-      // Pour tester rapidement : 'onboarding@resend.dev' ou 'noreply@resend.dev'
+    const { data, error } = await resend.emails.send({
       from: "noreply@resend.dev",
-      // Où tu reçois les messages (ton vrai mail)
-      to: "mister_moos@hotmail.fr",
+      // <= rester sur @resend.dev tant que ton domaine n'est pas vérifié
+      to: ["mabrouk.mustapha.pro@gmail.com"],
+      // essaie en ajoutant aussi un Gmail pour test
       subject: `Demande de contact \u2014 ${name}`,
-      // ✅ reply_to = l'adresse du client → quand tu cliques "Répondre", ça répond au client
       reply_to: email,
-      html
+      html,
+      text: `Nom: ${name}
+Email: ${email}
+Message:
+${message}`
     });
-    return {
-      statusCode: 200,
-      body: JSON.stringify({ success: true })
-    };
+    if (error) {
+      console.error("Resend error:", error);
+      return { statusCode: 502, body: JSON.stringify({ success: false, error }) };
+    }
+    return { statusCode: 200, body: JSON.stringify({ success: true, id: data?.id }) };
   } catch (err) {
-    console.error("Resend error:", err);
-    return {
-      statusCode: 500,
-      body: JSON.stringify({ success: false, error: "Server error" })
-    };
+    console.error("sendMail crash:", err);
+    return { statusCode: 500, body: JSON.stringify({ success: false, error: err?.message || "Server error" }) };
   }
 }
 // Annotate the CommonJS export names for ESM import in node:
