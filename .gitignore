@@ -28,3 +28,11 @@ coverage
 *.sw?
 
 *.tsbuildinfo
+
+# Local Netlify folder
+.netlify
+
+# secrets & local artifacts
+.env
+.netlify/
+

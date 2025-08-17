@@ -1,79 +1,75 @@
+<script setup>
+// Import des outils Vue et du router
+import { onMounted } from 'vue'
+import { RouterLink } from 'vue-router'
+
+// Import du composant "Estimation rapide"
+import EstimateWidget from '@/components/EstimateWidget.vue'
+
+// Import du logo
+import logo from '@/assets/menage.svg'
+
+// SEO / Titre de page
+onMounted(() => {
+  document.title = 'Entretien de locaux à Vitrolles — Accueil'
+})
+</script>
+
 <template>
-
-
-  <!-- CARROUSEL -->
-  <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-<div class="text-center pt-5">
-  <h2 class="fw-bold">Rénovation intérieure & aménagement</h2>
-  <p class="text-muted">Découvrez nos réalisations et imaginez votre futur intérieur</p>
-</div>
-
-    <div class="carousel-indicators">
-      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"></button>
-      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"></button>
-      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"></button>
-    </div>
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img src="../assets/cuisine.jpg" class="d-block w-100" alt="Cuisine rénovée">
-        <div class="carousel-caption bg-dark bg-opacity-50 p-3 rounded">
-          <h5>Votre intérieur transformé</h5>
-         
+  <!-- SECTION PRINCIPALE -->
+  <section class="container py-5">
+    <div class="row align-items-center g-4">
+      <!-- Colonne texte -->
+      <div class="col-lg-6">
+        <h1 class="mb-3">Entretien de locaux professionnels à Vitrolles</h1>
+        <p class="text-secondary">
+          Interventions <strong>après 18h30</strong> et le <strong>samedi</strong>.
+          Bureaux, parties communes, sanitaires, vitres.
+        </p>
+        <div class="d-flex gap-2 mt-3">
+          <RouterLink to="/prestations" class="btn btn-success">Voir nos prestations</RouterLink>
+          <RouterLink to="/contact" class="btn btn-outline-success">Demander un devis</RouterLink>
         </div>
       </div>
-      <div class="carousel-item">
-        <img src="../assets/carrelage.jpg" class="d-block w-100" alt="Carrelage rénové">
-        <div class="carousel-caption bg-dark bg-opacity-50 p-3 rounded">
-          <h5>Salle de bain sur-mesure</h5>
-          
+
+      <!-- Colonne image -->
+      <div class="col-lg-6 text-center">
+        <!-- ✅ commentaires en dehors des attributs -->
+        <img
+          :src="logo"
+          alt="RenoPro"
+          class="img-fluid rounded shadow-sm"
+          loading="lazy"
+          width="640" height="360"
+        />
+      </div>
+    </div>
+
+    <!-- AVANTAGES -->
+    <div class="row g-3 mt-5">
+      <div class="col-md-4">
+        <div class="p-3 border rounded h-100">
+          <h2 class="h6">Horaires adaptés</h2>
+          <p class="text-secondary mb-0">Après 18h30 et le samedi.</p>
         </div>
       </div>
-      <div class="carousel-item">
-        <img src="../assets/plomberie.jpg" class="d-block w-100" alt="Travaux plomberie">
-        <div class="carousel-caption bg-dark bg-opacity-50 p-3 rounded">
-          <h5>La cuisine de vos rêves</h5>
-         
+      <div class="col-md-4">
+        <div class="p-3 border rounded h-100">
+          <h2 class="h6">Discrétion & qualité</h2>
+          <p class="text-secondary mb-0">Procédures d’intervention.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="p-3 border rounded h-100">
+          <h2 class="h6">Devis rapide</h2>
+          <p class="text-secondary mb-0">Réponse sous 24–48h.</p>
         </div>
       </div>
     </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon"></span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-      <span class="carousel-control-next-icon"></span>
-    </button>
-  </div>
 
-  <!-- CONTENU PRINCIPAL -->
-  <main class="container my-5">
-    <div class="text-center mb-5">
-      <h1 class="text-primary">Bienvenue sur RenoPro</h1>
-      <p class="lead">Des rénovations élégantes pour un confort durable</p>
-      <RouterLink to="/contact" class="btn btn-success btn-lg mt-3">Demander un devis gratuit</RouterLink>
+    <!-- ESTIMATION -->
+    <div class="mt-5">
+      <EstimateWidget />
     </div>
-
-    <!-- SERVICES -->
-    <section class="row text-center">
-      <div class="col-md-4 mb-4">
-        <i class="bi bi-brush fs-1 text-primary"></i>
-        <h4 class="mt-3">Peinture & déco</h4>
-        <p>Travaux de peinture modernes avec finitions haut de gamme.</p>
-        <img src="../assets/peinture.jpg" alt="Peinture" class="img-fluid rounded shadow">
-      </div>
-
-      <div class="col-md-4 mb-4">
-        <i class="bi bi-house-gear fs-1 text-success"></i>
-        <h4 class="mt-3">Rénovation intérieure</h4>
-        <p>Transformation complète ou partielle de votre habitat.</p>
-        <img src="../assets/plomberie.jpg" alt="Plomberie" class="img-fluid rounded shadow">
-      </div>
-
-      <div class="col-md-4 mb-4">
-        <i class="bi bi-lightning-charge fs-1 text-warning"></i>
-        <h4 class="mt-3">Cuisine & salle de bain</h4>
-        <p>Espaces fonctionnels et élégants, prêts à l’usage.</p>
-        <img src="../assets/cuisine.jpg" alt="Cuisine rénovée" class="img-fluid rounded shadow">
-      </div>
-    </section>
-  </main>
+  </section>
 </template>
