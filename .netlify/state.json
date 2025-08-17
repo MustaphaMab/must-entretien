@@ -1,0 +1,20 @@
+{
+	"geolocation": {
+		"data": {
+			"city": "Marseille",
+			"country": {
+				"code": "FR",
+				"name": "France"
+			},
+			"subdivision": {
+				"code": "PAC",
+				"name": "Provence-Alpes-Côte d'Azur"
+			},
+			"timezone": "Europe/Paris",
+			"latitude": 43.3736,
+			"longitude": 5.3547,
+			"postalCode": "13015"
+		},
+		"timestamp": 1755421101819
+	}
+}
