@@ -21,13 +21,13 @@ export async function handler(event) {
     `;
 
     const { data, error } = await resend.emails.send({
-      from: "noreply@resend.dev",       // <= rester sur @resend.dev tant que ton domaine n'est pas vérifié
-      to: ["mabrouk.mustapha.pro@gmail.com"],   // essaie en ajoutant aussi un Gmail pour test
-      subject: `Demande de contact — ${name}`,
-      reply_to: email,
-      html,
-      text: `Nom: ${name}\nEmail: ${email}\nMessage:\n${message}`
-    });
+  from: "noreply@resend.dev",                 // garde ça tant que le domaine n’est pas vérifié
+  to: ["mabrouk-mustapha@hotmail.fr"],        // ✅ l’adresse de TON compte Resend
+  subject: `Demande de contact — ${name}`,
+  reply_to: email,
+  html,
+  text: `Nom: ${name}\nEmail: ${email}\nMessage:\n${message}`
+});
 
     if (error) {
       console.error("Resend error:", error);
