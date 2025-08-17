@@ -6,3 +6,19 @@
   directory = "netlify/functions"
   node_bundler = "esbuild"
   external_node_modules = ["@react-email/render"]
+
+[build.environment]
+  NODE_VERSION = "20"
+
+  [[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "no-referrer-when-downgrade"
+    Cache-Control = "public, max-age=0, must-revalidate"
