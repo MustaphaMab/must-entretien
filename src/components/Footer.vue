@@ -3,8 +3,12 @@
     <div class="container text-center">
       <p class="mb-2">&copy; 2025 Renovation du 13 - Tous droits réservés</p>
       <nav>
-        <RouterLink to="/mentionsLegales" class="text-secondary mx-2">Mentions légales</RouterLink>
-        <RouterLink to="/confidentialite" class="text-secondary mx-2">Confidentialité</RouterLink>
+        <RouterLink to="/mentions-legales" class="text-secondary mx-2"
+          >Mentions légales</RouterLink
+        >
+        <RouterLink to="/confidentialite" class="text-secondary mx-2"
+          >Confidentialité</RouterLink
+        >
         <RouterLink to="/faq" class="text-secondary mx-2">FAQ</RouterLink>
       </nav>
     </div>

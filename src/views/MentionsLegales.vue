@@ -2,11 +2,11 @@
   <div class="container py-5">
     <h1 class="mb-4">Mentions légales</h1>
     <p>
-      Ce site est édité par <strong>Rénovation du 13</strong>.
+      Ce site est édité par <strong>Must4You</strong>.
     </p>
     <p>
       Adresse : Vitrolles, France<br />
-      Email : contact@renovation13.fr
+      Email : contact@Must4You.fr
     </p>
     <p>
       Hébergeur : Netlify<br />
