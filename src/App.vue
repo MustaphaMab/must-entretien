@@ -1,18 +1,15 @@
 <script setup>
 import Navbar from './components/Navbar.vue'
+import Footer from "./components/Footer.vue";
 import { RouterView } from 'vue-router'
 </script>
 
 <template>
   <Navbar />
 
-  <main>
+  <main class="flex-fill">
     <RouterView />
   </main>
 
-  <!-- Footer -->
-  <footer class="bg-light pt-5 pb-3 mt-5 border-top shadow-sm">
-    <!-- contenu du footer ici -->
-  </footer>
+  <Footer />
 </template>
-
