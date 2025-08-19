@@ -8,7 +8,7 @@
     <p>
       Elles ne sont jamais revendues et vous pouvez demander leur suppression
       à tout moment en envoyant un mail à
-      <strong>contact@renovation13.fr</strong>.
+      <strong>contact@must4you.fr</strong>.
     </p>
   </div>
 </template>

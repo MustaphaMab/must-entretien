@@ -3,7 +3,7 @@ import { reactive, computed } from 'vue'
 
 // état du formulaire d'estimation
 const state = reactive({
-  surface: 150,             // m²
+  surface: 100,             // m²
   frequence: 'hebdo',       // quotidien | hebdo | mensuel | ponctuel
   sanitaires: true,         // option +15%
 })

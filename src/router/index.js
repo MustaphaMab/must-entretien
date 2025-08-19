@@ -37,7 +37,7 @@ const router = createRouter({
 
 // (facultatif) titre de page automatique
 router.afterEach((to) => {
-  document.title = to.meta?.title || 'Rénovation du 13'
+  document.title = to.meta?.title || 'Must4You'
 })
 
 export default router
