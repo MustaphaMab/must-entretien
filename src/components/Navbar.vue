@@ -9,7 +9,7 @@ const isMenuOpen = ref(false)
   <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top shadow-sm border-bottom px-4">
     <RouterLink class="navbar-brand d-flex align-items-center gap-2" to="/">
       <!-- ✅ Logo arrondi avec bordure et ombre -->
-      <img src="@/assets/menage.svg" alt="Logo Must4You" class="logo" />
+      <img src="@/assets/menage.svg" alt="Logo Must Entretien" class="logo" />
       <span class="text-dark fw-bold fs-4">Must4You</span>
     </RouterLink>
 
