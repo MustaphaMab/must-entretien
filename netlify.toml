@@ -10,11 +10,19 @@
 [build.environment]
   NODE_VERSION = "20"
 
-  [[redirects]]
+# --- IMPORTANT : bloc dev pour le local ---
+[dev]
+  framework = "vite"
+  targetPort = 5173   # le port où Vite tourne
+  port = 8888         # le port où Netlify Dev exposera le site + fonctions
+
+# --- Redirection SPA (doit être au niveau racine) ---
+[[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
 
+# --- En-têtes ---
 [[headers]]
   for = "/*"
   [headers.values]
